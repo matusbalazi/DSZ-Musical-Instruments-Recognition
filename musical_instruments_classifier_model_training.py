@@ -5,12 +5,12 @@ from sklearn.preprocessing import LabelEncoder
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from tensorflow.python.keras.utils.np_utils import to_categorical
-from tensorflow.python.keras.models import load_model
 
+DATASET_PATH = "C:\DSZ\dataset_irmas"
 MODEL_FILENAME = "trained_model.h5"
 
 # definovanie hudobnych nastrojov, ktore je mozne rozpoznat
-INSTRUMENTS = ["acoustic_guitar", "piano", "saxophone", "violin"]
+INSTRUMENTS = ["guitar", "piano", "saxophone", "violin"]
 
 def get_model_filename() -> str:
     return MODEL_FILENAME
@@ -31,6 +31,7 @@ def extract_features(file_path):
         mfccs = np.pad(mfccs, ((0, 0), (0, 40 - mfccs.shape[1])), mode="constant")
     else:
         mfccs = mfccs[:, :40]
+
     return mfccs
 
 def get_model():
@@ -58,8 +59,8 @@ def main():
     y_train = []
 
     for instrument in get_instruments():
-        for file_name in os.listdir(f'C:\DSZ\dataset_irmas\{instrument}'):
-            file_path = f'C:\DSZ\dataset_irmas\{instrument}/{file_name}'
+        for file_name in os.listdir(f'{DATASET_PATH}\{instrument}'):
+            file_path = f'{DATASET_PATH}\{instrument}/{file_name}'
             features = extract_features(file_path)
             X_train.append(features)
             y_train.append(instrument)
@@ -72,6 +73,8 @@ def main():
 
     # ulozenie natrenovaneho modelu
     model.save(get_model_filename())
+
+    print("\nNatrenovany model bol uspesne ulozeny")
 
 if __name__ == '__main__':
     main()
