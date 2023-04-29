@@ -10,7 +10,7 @@ from tensorflow.python.keras.models import load_model
 MODEL_FILENAME = "trained_model.h5"
 
 # definovanie hudobnych nastrojov, ktore je mozne rozpoznat
-INSTRUMENTS = ["pia", "sax"]
+INSTRUMENTS = ["acoustic_guitar", "piano", "saxophone", "violin"]
 
 def get_model_filename() -> str:
     return MODEL_FILENAME

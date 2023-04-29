@@ -9,7 +9,7 @@ def main():
     model = load_model(get_model_filename())
 
     # otestovanie modelu na novej zvukovej nahravke
-    file_path = "C:\DSZ\samples\piano.mp3"
+    file_path = "C:\DSZ\samples\classic_guitar.mp3"
     features = extract_features(file_path)
     X_test = np.array(features).reshape(-1, 20, 40, 1)
     y_pred = model.predict(X_test)
