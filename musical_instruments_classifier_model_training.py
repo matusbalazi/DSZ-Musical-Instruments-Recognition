@@ -19,9 +19,9 @@ def get_instruments() -> list:
     return INSTRUMENTS
 
 # funkcia na vyextrahovanie audio priznakov zo zvukoveho suboru
-def extract_features(file_path):
+def extract_features(audio_file_path):
     # nacitanie zvukoveho suboru
-    y, sr = librosa.load(file_path, mono=True, duration=5)
+    y, sr = librosa.load(audio_file_path, mono=True, duration=5)
 
     # vyextrahovanie MFCC kepstralnych koeficientov
     mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20)
@@ -74,7 +74,8 @@ def main():
     # ulozenie natrenovaneho modelu
     model.save(get_model_filename())
 
-    print("\nNatrenovany model bol uspesne ulozeny")
+    if (os.path.exists(MODEL_FILENAME)):
+        print("\nNatrenovany model bol uspesne ulozeny")
 
 if __name__ == '__main__':
     main()

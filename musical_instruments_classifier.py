@@ -1,11 +1,11 @@
 import numpy as np
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 from tensorflow.python.keras.models import load_model
 from musical_instruments_classifier_model_training import get_model_filename
 from musical_instruments_classifier_model_training import extract_features
 from musical_instruments_classifier_model_training import get_instruments
 
-AUDIO_FILE_PATH = "C:\DSZ\samples\saxophone.mp3"
+AUDIO_FILE_PATH = "C:\DSZ\samples\guitar4.mp3"
 
 def main():
     # nacitanie natrenovaneho modelu
