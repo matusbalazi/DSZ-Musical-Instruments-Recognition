@@ -6,7 +6,7 @@ from musical_instruments_classifier_cnn_model_training import get_model_filename
 from musical_instruments_classifier_cnn_model_training import extract_features
 from musical_instruments_classifier_cnn_model_training import get_instruments
 
-RECORDINGS_DIR = "C:\DSZ\samples\my_recordings"
+RECORDINGS_DIR = "C:\DSZ\samples\my_recordings_edited"
 AUDIO_FILE_PATH = "C:\DSZ\samples\my_recordings\my_recording_9_4.wav"
 
 def main():

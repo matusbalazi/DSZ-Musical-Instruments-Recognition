@@ -7,7 +7,7 @@ from tensorflow.python.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxP
 from tensorflow.python.keras.utils.np_utils import to_categorical
 
 DATASET_PATH = "C:\DSZ\dataset_irmas"
-MODEL_FILENAME = "trained_model_optimizer_nadam_metrics_cosine_proximity.h5"
+MODEL_FILENAME = "trained_model.h5"
 
 # definovanie hudobnych nastrojov, ktore je mozne rozpoznat
 INSTRUMENTS = ["guitar", "piano", "saxophone", "violin"]
@@ -47,7 +47,7 @@ def get_model():
     model.add(Dense(len(get_instruments()), activation="softmax"))
 
     # kompilacia modelu
-    model.compile(loss="categorical_crossentropy", optimizer="nadam", metrics=["cosine_proximity"])
+    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
     return model
 
